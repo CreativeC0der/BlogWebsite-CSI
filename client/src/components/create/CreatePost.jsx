@@ -81,6 +81,7 @@ const CreatePost = () => {
 
                 const response = await API.uploadFile(data);
                 post.picture = response.data;
+                console.log('picture-url:::::::', post.picture);
             }
         }
         getImage();
@@ -111,7 +112,7 @@ const CreatePost = () => {
                     style={{ display: "none" }}
                     onChange={(e) => setFile(e.target.files[0])}
                 />
-                <InputTextField onChange={(e) => handleChange(e)} name='title' placeholder="Title" />
+                <InputTextField onChange={(e) => handleChange(e)} name='title' placeholder="Title" required={true} />
                 <Button onClick={() => savePost()} variant="contained" color="primary">Publish</Button>
             </StyledFormControl>
 
@@ -120,6 +121,7 @@ const CreatePost = () => {
                 placeholder="Tell your story..."
                 name='description'
                 onChange={(e) => handleChange(e)}
+                required={true}
             />
         </Container>
     )
